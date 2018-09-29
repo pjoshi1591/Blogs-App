@@ -10,7 +10,9 @@ LocalStrategy    = require("passport-local"),
 expressSanitizer = require("express-sanitizer"),
 User             = require("./models/user");
 
-mongoose.connect('mongodb://localhost:27017/restful_blog_app_v3', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/restful_blog_app_v3', { useNewUrlParser: true });
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/restful_blog_app";
+mongoose.connect(url, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
