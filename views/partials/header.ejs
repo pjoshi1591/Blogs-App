@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+	<script src"https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
+</head>
+<body>
+	<div class="ui fixed inverted menu">
+		<div class="ui container">
+			<div class="header active item">
+				<i class="code icon"></i><a href="/">Blog Site</a>
+			</div>
+			<a href="/" class="item">Home</a>
+		    <a href="/blogs/new" class="item">New Post</a>
+		</div>
+		<div class="right menu">
+		<% if(!currentUser) { %>
+          <a href="/login" class="item">Login</a>
+          <a href="/register" class="item">Sign Up</a>
+          <% } else { %>
+          <a href="" class="item">Signed In as <%= currentUser.username %></a>
+          <a href="/logout" class="item">Logout</a>
+          <% } %>
+        </div>
+		
+	</div>
+	<% if(error && error.length > 0){ %>
+<div class="ui red message">
+	<%= error %>
+</div>
+<% } %>
+<% if(success && success.length > 0){ %>
+<div class="ui green message ">
+	<%= success %>
+</div>
+<% } %>
